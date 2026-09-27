@@ -1,0 +1,1401 @@
+{
+  "generated_utc": "2026-09-27 04:06 UTC",
+  "python": "3.11.15",
+  "sklearn": "1.9.1",
+  "tasks": {
+    "fake_news": {
+      "labels": [
+        "fake",
+        "real"
+      ],
+      "audit": {
+        "rows": 3729,
+        "empty_texts": 8,
+        "unique_texts": 2230,
+        "duplicate_rows": 1499,
+        "duplicate_share": 0.40198444623223384,
+        "largest_duplicate_group": 79,
+        "texts_with_conflicting_labels": 1,
+        "class_counts_raw": {
+          "fake": 1877,
+          "real": 1852
+        },
+        "median_words": 393.0
+      },
+      "legacy": {
+        "n_test": 746,
+        "n_test_unseen": 439,
+        "test_rows_with_text_in_train": 307,
+        "models": {
+          "TF-IDF + LogReg (C=10)": {
+            "all_test": {
+              "n": 746,
+              "accuracy": 0.9973190348525469,
+              "macro_f1": 0.9973190348525469,
+              "macro_f1_ci95": [
+                0.9919561795087446,
+                1.0
+              ],
+              "per_class": {
+                "fake": {
+                  "precision": 0.9973190348525469,
+                  "recall": 0.9973190348525469,
+                  "f1": 0.9973190348525469,
+                  "support": 373
+                },
+                "real": {
+                  "precision": 0.9973190348525469,
+                  "recall": 0.9973190348525469,
+                  "f1": 0.9973190348525469,
+                  "support": 373
+                }
+              },
+              "confusion_matrix": {
+                "labels": [
+                  "fake",
+                  "real"
+                ],
+                "matrix": [
+                  [
+                    372,
+                    1
+                  ],
+                  [
+                    1,
+                    372
+                  ]
+                ]
+              }
+            },
+            "unseen_test": {
+              "n": 439,
+              "accuracy": 0.9977220956719818,
+              "macro_f1": 0.9957262877113735,
+              "macro_f1_ci95": [
+                0.9865415861920965,
+                1.0
+              ],
+              "per_class": {
+                "fake": {
+                  "precision": 0.9972972972972973,
+                  "recall": 1.0,
+                  "f1": 0.9986468200270636,
+                  "support": 369
+                },
+                "real": {
+                  "precision": 1.0,
+                  "recall": 0.9857142857142858,
+                  "f1": 0.9928057553956835,
+                  "support": 70
+                }
+              },
+              "confusion_matrix": {
+                "labels": [
+                  "fake",
+                  "real"
+                ],
+                "matrix": [
+                  [
+                    369,
+                    0
+                  ],
+                  [
+                    1,
+                    69
+                  ]
+                ]
+              }
+            }
+          },
+          "Original BiSimpleRNN (NEWS.h5)": {
+            "all_test": {
+              "n": 746,
+              "accuracy": 0.9638069705093834,
+              "macro_f1": 0.9638053445608284,
+              "macro_f1_ci95": [
+                0.9490483592934773,
+                0.974560900913511
+              ],
+              "per_class": {
+                "fake": {
+                  "precision": 0.9576719576719577,
+                  "recall": 0.9705093833780161,
+                  "f1": 0.9640479360852197,
+                  "support": 373
+                },
+                "real": {
+                  "precision": 0.970108695652174,
+                  "recall": 0.9571045576407506,
+                  "f1": 0.9635627530364372,
+                  "support": 373
+                }
+              },
+              "confusion_matrix": {
+                "labels": [
+                  "fake",
+                  "real"
+                ],
+                "matrix": [
+                  [
+                    362,
+                    11
+                  ],
+                  [
+                    16,
+                    357
+                  ]
+                ]
+              }
+            },
+            "unseen_test": {
+              "n": 439,
+              "accuracy": 0.9384965831435079,
+              "macro_f1": 0.8818304172274563,
+              "macro_f1_ci95": [
+                0.8414088089296007,
+                0.9188964177285232
+              ],
+              "per_class": {
+                "fake": {
+                  "precision": 0.9572192513368984,
+                  "recall": 0.9701897018970189,
+                  "f1": 0.9636608344549125,
+                  "support": 369
+                },
+                "real": {
+                  "precision": 0.8307692307692308,
+                  "recall": 0.7714285714285715,
+                  "f1": 0.8,
+                  "support": 70
+                }
+              },
+              "confusion_matrix": {
+                "labels": [
+                  "fake",
+                  "real"
+                ],
+                "matrix": [
+                  [
+                    358,
+                    11
+                  ],
+                  [
+                    16,
+                    54
+                  ]
+                ]
+              }
+            },
+            "note": "saved model trained by the original project on this same split"
+          }
+        }
+      },
+      "clean": {
+        "protocol": {
+          "rows_before": 3729,
+          "rows_after": 2229,
+          "dropped_conflicting_texts": 1,
+          "class_counts_clean": {
+            "fake": 1851,
+            "real": 378
+          },
+          "split_sizes": {
+            "train": 1559,
+            "val": 335,
+            "test": 335
+          },
+          "exact_overlap": {
+            "train_test": 0,
+            "train_val": 0
+          },
+          "near_duplicates_test_vs_train": {
+            "threshold": 0.9,
+            "count": 0,
+            "of": 335
+          }
+        },
+        "models": {
+          "Majority class": {
+            "n": 335,
+            "accuracy": 0.8298507462686567,
+            "macro_f1": 0.4535073409461664,
+            "macro_f1_ci95": [
+              0.4397993311036789,
+              0.46485623003194887
+            ],
+            "per_class": {
+              "fake": {
+                "precision": 0.8298507462686567,
+                "recall": 1.0,
+                "f1": 0.9070146818923328,
+                "support": 278
+              },
+              "real": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 57
+              }
+            },
+            "confusion_matrix": {
+              "labels": [
+                "fake",
+                "real"
+              ],
+              "matrix": [
+                [
+                  278,
+                  0
+                ],
+                [
+                  57,
+                  0
+                ]
+              ]
+            }
+          },
+          "TF-IDF + LogReg": {
+            "n": 335,
+            "accuracy": 0.9940298507462687,
+            "macro_f1": 0.989574256193203,
+            "macro_f1_ci95": [
+              0.9737563650607128,
+              1.0
+            ],
+            "per_class": {
+              "fake": {
+                "precision": 1.0,
+                "recall": 0.9928057553956835,
+                "f1": 0.9963898916967509,
+                "support": 278
+              },
+              "real": {
+                "precision": 0.9661016949152542,
+                "recall": 1.0,
+                "f1": 0.9827586206896551,
+                "support": 57
+              }
+            },
+            "confusion_matrix": {
+              "labels": [
+                "fake",
+                "real"
+              ],
+              "matrix": [
+                [
+                  276,
+                  2
+                ],
+                [
+                  0,
+                  57
+                ]
+              ]
+            },
+            "tuning": {
+              "val_macro_f1_by_C": {
+                "0.3": 1.0,
+                "1.0": 1.0,
+                "3.0": 1.0,
+                "10.0": 1.0,
+                "30.0": 1.0
+              },
+              "chosen_C": 0.3
+            }
+          },
+          "BiSimpleRNN (retrained)": {
+            "seed": 42,
+            "epochs_run": 13,
+            "best_val_loss": 0.16812357306480408,
+            "n": 335,
+            "accuracy": 0.9582089552238806,
+            "macro_f1": 0.9238636363636363,
+            "macro_f1_ci95": [
+              0.8808793914791211,
+              0.95886381995853
+            ],
+            "per_class": {
+              "fake": {
+                "precision": 0.9680851063829787,
+                "recall": 0.9820143884892086,
+                "f1": 0.975,
+                "support": 278
+              },
+              "real": {
+                "precision": 0.9056603773584906,
+                "recall": 0.8421052631578947,
+                "f1": 0.8727272727272727,
+                "support": 57
+              }
+            },
+            "confusion_matrix": {
+              "labels": [
+                "fake",
+                "real"
+              ],
+              "matrix": [
+                [
+                  273,
+                  5
+                ],
+                [
+                  9,
+                  48
+                ]
+              ]
+            },
+            "seeds": [
+              42,
+              43,
+              44
+            ],
+            "macro_f1_mean": 0.7826400927081552,
+            "macro_f1_std": 0.1667285288476857,
+            "accuracy_mean": 0.9124378109452737,
+            "accuracy_std": 0.050677936629838174,
+            "runs": [
+              {
+                "seed": 42,
+                "epochs_run": 13,
+                "accuracy": 0.9582089552238806,
+                "macro_f1": 0.9238636363636363
+              },
+              {
+                "seed": 43,
+                "epochs_run": 15,
+                "accuracy": 0.9373134328358209,
+                "macro_f1": 0.8755506023456987
+              },
+              {
+                "seed": 44,
+                "epochs_run": 8,
+                "accuracy": 0.8417910447761194,
+                "macro_f1": 0.5485060394151303
+              }
+            ]
+          }
+        }
+      }
+    },
+    "category": {
+      "labels": [
+        "automobile",
+        "entertainment",
+        "politics",
+        "science",
+        "sports",
+        "technology",
+        "world"
+      ],
+      "audit": {
+        "rows": 4817,
+        "empty_texts": 0,
+        "unique_texts": 1998,
+        "duplicate_rows": 2819,
+        "duplicate_share": 0.585219015985053,
+        "largest_duplicate_group": 9,
+        "texts_with_conflicting_labels": 65,
+        "class_counts_raw": {
+          "automobile": 256,
+          "entertainment": 998,
+          "politics": 546,
+          "science": 389,
+          "sports": 856,
+          "technology": 751,
+          "world": 1021
+        },
+        "median_words": 59.0
+      },
+      "legacy": {
+        "n_test": 964,
+        "n_test_unseen": 128,
+        "test_rows_with_text_in_train": 836,
+        "models": {
+          "TF-IDF + LogReg (C=10)": {
+            "all_test": {
+              "n": 964,
+              "accuracy": 0.9470954356846473,
+              "macro_f1": 0.9474583233348053,
+              "macro_f1_ci95": [
+                0.9324655724289688,
+                0.9605296472660259
+              ],
+              "per_class": {
+                "automobile": {
+                  "precision": 0.8888888888888888,
+                  "recall": 1.0,
+                  "f1": 0.9411764705882353,
+                  "support": 40
+                },
+                "entertainment": {
+                  "precision": 0.9621621621621622,
+                  "recall": 0.978021978021978,
+                  "f1": 0.9700272479564033,
+                  "support": 182
+                },
+                "politics": {
+                  "precision": 0.9565217391304348,
+                  "recall": 1.0,
+                  "f1": 0.9777777777777777,
+                  "support": 110
+                },
+                "science": {
+                  "precision": 0.9230769230769231,
+                  "recall": 0.9655172413793104,
+                  "f1": 0.9438202247191011,
+                  "support": 87
+                },
+                "sports": {
+                  "precision": 0.9823529411764705,
+                  "recall": 0.9709302325581395,
+                  "f1": 0.9766081871345029,
+                  "support": 172
+                },
+                "technology": {
+                  "precision": 0.89171974522293,
+                  "recall": 0.8974358974358975,
+                  "f1": 0.8945686900958466,
+                  "support": 156
+                },
+                "world": {
+                  "precision": 0.9651741293532339,
+                  "recall": 0.8940092165898618,
+                  "f1": 0.9282296650717703,
+                  "support": 217
+                }
+              },
+              "confusion_matrix": {
+                "labels": [
+                  "automobile",
+                  "entertainment",
+                  "politics",
+                  "science",
+                  "sports",
+                  "technology",
+                  "world"
+                ],
+                "matrix": [
+                  [
+                    40,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    178,
+                    0,
+                    0,
+                    1,
+                    1,
+                    2
+                  ],
+                  [
+                    0,
+                    0,
+                    110,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    84,
+                    0,
+                    3,
+                    0
+                  ],
+                  [
+                    0,
+                    3,
+                    0,
+                    0,
+                    167,
+                    0,
+                    2
+                  ],
+                  [
+                    5,
+                    1,
+                    1,
+                    6,
+                    0,
+                    140,
+                    3
+                  ],
+                  [
+                    0,
+                    3,
+                    4,
+                    1,
+                    2,
+                    13,
+                    194
+                  ]
+                ]
+              }
+            },
+            "unseen_test": {
+              "n": 128,
+              "accuracy": 0.9375,
+              "macro_f1": 0.8151778138155847,
+              "macro_f1_ci95": [
+                0.6646927531176299,
+                0.8406205983295912
+              ],
+              "per_class": {
+                "automobile": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0,
+                  "support": 0
+                },
+                "entertainment": {
+                  "precision": 0.9,
+                  "recall": 1.0,
+                  "f1": 0.9473684210526315,
+                  "support": 18
+                },
+                "politics": {
+                  "precision": 0.8888888888888888,
+                  "recall": 1.0,
+                  "f1": 0.9411764705882353,
+                  "support": 16
+                },
+                "science": {
+                  "precision": 1.0,
+                  "recall": 1.0,
+                  "f1": 1.0,
+                  "support": 2
+                },
+                "sports": {
+                  "precision": 1.0,
+                  "recall": 0.9285714285714286,
+                  "f1": 0.9629629629629629,
+                  "support": 28
+                },
+                "technology": {
+                  "precision": 0.9230769230769231,
+                  "recall": 1.0,
+                  "f1": 0.96,
+                  "support": 24
+                },
+                "world": {
+                  "precision": 0.9444444444444444,
+                  "recall": 0.85,
+                  "f1": 0.8947368421052632,
+                  "support": 40
+                }
+              },
+              "confusion_matrix": {
+                "labels": [
+                  "automobile",
+                  "entertainment",
+                  "politics",
+                  "science",
+                  "sports",
+                  "technology",
+                  "world"
+                ],
+                "matrix": [
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    18,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    16,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    2,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    26,
+                    0,
+                    2
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    24,
+                    0
+                  ],
+                  [
+                    0,
+                    2,
+                    2,
+                    0,
+                    0,
+                    2,
+                    34
+                  ]
+                ]
+              }
+            }
+          },
+          "Original BiLSTM (category.h5)": {
+            "all_test": {
+              "n": 964,
+              "accuracy": 0.91701244813278,
+              "macro_f1": 0.913243097434847,
+              "macro_f1_ci95": [
+                0.8936406676753959,
+                0.9287882864031144
+              ],
+              "per_class": {
+                "automobile": {
+                  "precision": 0.8333333333333334,
+                  "recall": 1.0,
+                  "f1": 0.9090909090909091,
+                  "support": 40
+                },
+                "entertainment": {
+                  "precision": 0.9308510638297872,
+                  "recall": 0.9615384615384616,
+                  "f1": 0.9459459459459459,
+                  "support": 182
+                },
+                "politics": {
+                  "precision": 0.9166666666666666,
+                  "recall": 1.0,
+                  "f1": 0.9565217391304348,
+                  "support": 110
+                },
+                "science": {
+                  "precision": 0.8809523809523809,
+                  "recall": 0.8505747126436781,
+                  "f1": 0.8654970760233918,
+                  "support": 87
+                },
+                "sports": {
+                  "precision": 0.9763313609467456,
+                  "recall": 0.9593023255813954,
+                  "f1": 0.967741935483871,
+                  "support": 172
+                },
+                "technology": {
+                  "precision": 0.8343949044585988,
+                  "recall": 0.8397435897435898,
+                  "f1": 0.8370607028753994,
+                  "support": 156
+                },
+                "world": {
+                  "precision": 0.9545454545454546,
+                  "recall": 0.8709677419354839,
+                  "f1": 0.9108433734939759,
+                  "support": 217
+                }
+              },
+              "confusion_matrix": {
+                "labels": [
+                  "automobile",
+                  "entertainment",
+                  "politics",
+                  "science",
+                  "sports",
+                  "technology",
+                  "world"
+                ],
+                "matrix": [
+                  [
+                    40,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    175,
+                    2,
+                    0,
+                    2,
+                    1,
+                    2
+                  ],
+                  [
+                    0,
+                    0,
+                    110,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    1,
+                    0,
+                    0,
+                    74,
+                    0,
+                    9,
+                    3
+                  ],
+                  [
+                    0,
+                    7,
+                    0,
+                    0,
+                    165,
+                    0,
+                    0
+                  ],
+                  [
+                    7,
+                    3,
+                    4,
+                    7,
+                    0,
+                    131,
+                    4
+                  ],
+                  [
+                    0,
+                    3,
+                    4,
+                    3,
+                    2,
+                    16,
+                    189
+                  ]
+                ]
+              }
+            },
+            "unseen_test": {
+              "n": 128,
+              "accuracy": 0.796875,
+              "macro_f1": 0.5773226773226774,
+              "macro_f1_ci95": [
+                0.5180014245461627,
+                0.6173593655495972
+              ],
+              "per_class": {
+                "automobile": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0,
+                  "support": 0
+                },
+                "entertainment": {
+                  "precision": 0.6923076923076923,
+                  "recall": 1.0,
+                  "f1": 0.8181818181818182,
+                  "support": 18
+                },
+                "politics": {
+                  "precision": 0.6666666666666666,
+                  "recall": 1.0,
+                  "f1": 0.8,
+                  "support": 16
+                },
+                "science": {
+                  "precision": 0.0,
+                  "recall": 0.0,
+                  "f1": 0.0,
+                  "support": 2
+                },
+                "sports": {
+                  "precision": 1.0,
+                  "recall": 0.8571428571428571,
+                  "f1": 0.9230769230769231,
+                  "support": 28
+                },
+                "technology": {
+                  "precision": 0.7777777777777778,
+                  "recall": 0.5833333333333334,
+                  "f1": 0.6666666666666666,
+                  "support": 24
+                },
+                "world": {
+                  "precision": 0.9375,
+                  "recall": 0.75,
+                  "f1": 0.8333333333333334,
+                  "support": 40
+                }
+              },
+              "confusion_matrix": {
+                "labels": [
+                  "automobile",
+                  "entertainment",
+                  "politics",
+                  "science",
+                  "sports",
+                  "technology",
+                  "world"
+                ],
+                "matrix": [
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    18,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    16,
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  [
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    2
+                  ],
+                  [
+                    0,
+                    4,
+                    0,
+                    0,
+                    24,
+                    0,
+                    0
+                  ],
+                  [
+                    2,
+                    2,
+                    4,
+                    2,
+                    0,
+                    14,
+                    0
+                  ],
+                  [
+                    0,
+                    2,
+                    4,
+                    0,
+                    0,
+                    4,
+                    30
+                  ]
+                ]
+              }
+            },
+            "note": "saved model trained by the original project on this same split"
+          }
+        }
+      },
+      "clean": {
+        "protocol": {
+          "rows_before": 4817,
+          "rows_after": 1933,
+          "dropped_conflicting_texts": 65,
+          "class_counts_clean": {
+            "automobile": 70,
+            "entertainment": 423,
+            "politics": 235,
+            "science": 136,
+            "sports": 368,
+            "technology": 287,
+            "world": 414
+          },
+          "split_sizes": {
+            "train": 1353,
+            "val": 290,
+            "test": 290
+          },
+          "exact_overlap": {
+            "train_test": 0,
+            "train_val": 0
+          },
+          "near_duplicates_test_vs_train": {
+            "threshold": 0.9,
+            "count": 0,
+            "of": 290
+          }
+        },
+        "models": {
+          "Majority class": {
+            "n": 290,
+            "accuracy": 0.2206896551724138,
+            "macro_f1": 0.0516545601291364,
+            "macro_f1_ci95": [
+              0.042713595702210505,
+              0.06055900621118012
+            ],
+            "per_class": {
+              "automobile": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 11
+              },
+              "entertainment": {
+                "precision": 0.2206896551724138,
+                "recall": 1.0,
+                "f1": 0.3615819209039548,
+                "support": 64
+              },
+              "politics": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 35
+              },
+              "science": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 20
+              },
+              "sports": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 55
+              },
+              "technology": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 43
+              },
+              "world": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 62
+              }
+            },
+            "confusion_matrix": {
+              "labels": [
+                "automobile",
+                "entertainment",
+                "politics",
+                "science",
+                "sports",
+                "technology",
+                "world"
+              ],
+              "matrix": [
+                [
+                  0,
+                  11,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  64,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  35,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  20,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  55,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  43,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  62,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ]
+            }
+          },
+          "TF-IDF + LogReg": {
+            "n": 290,
+            "accuracy": 0.906896551724138,
+            "macro_f1": 0.8807873704128444,
+            "macro_f1_ci95": [
+              0.8265906036324161,
+              0.9283837377045123
+            ],
+            "per_class": {
+              "automobile": {
+                "precision": 0.875,
+                "recall": 0.6363636363636364,
+                "f1": 0.7368421052631579,
+                "support": 11
+              },
+              "entertainment": {
+                "precision": 0.9384615384615385,
+                "recall": 0.953125,
+                "f1": 0.9457364341085271,
+                "support": 64
+              },
+              "politics": {
+                "precision": 1.0,
+                "recall": 0.9142857142857143,
+                "f1": 0.9552238805970149,
+                "support": 35
+              },
+              "science": {
+                "precision": 0.85,
+                "recall": 0.85,
+                "f1": 0.85,
+                "support": 20
+              },
+              "sports": {
+                "precision": 0.9464285714285714,
+                "recall": 0.9636363636363636,
+                "f1": 0.954954954954955,
+                "support": 55
+              },
+              "technology": {
+                "precision": 0.8333333333333334,
+                "recall": 0.813953488372093,
+                "f1": 0.8235294117647058,
+                "support": 43
+              },
+              "world": {
+                "precision": 0.8656716417910447,
+                "recall": 0.9354838709677419,
+                "f1": 0.8992248062015504,
+                "support": 62
+              }
+            },
+            "confusion_matrix": {
+              "labels": [
+                "automobile",
+                "entertainment",
+                "politics",
+                "science",
+                "sports",
+                "technology",
+                "world"
+              ],
+              "matrix": [
+                [
+                  7,
+                  0,
+                  0,
+                  0,
+                  0,
+                  4,
+                  0
+                ],
+                [
+                  0,
+                  61,
+                  0,
+                  0,
+                  2,
+                  1,
+                  0
+                ],
+                [
+                  0,
+                  2,
+                  32,
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  0,
+                  17,
+                  0,
+                  1,
+                  2
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  0,
+                  53,
+                  1,
+                  0
+                ],
+                [
+                  1,
+                  0,
+                  0,
+                  0,
+                  1,
+                  35,
+                  6
+                ],
+                [
+                  0,
+                  1,
+                  0,
+                  3,
+                  0,
+                  0,
+                  58
+                ]
+              ]
+            },
+            "tuning": {
+              "val_macro_f1_by_C": {
+                "0.3": 0.8857802614381278,
+                "1.0": 0.8718011824310624,
+                "3.0": 0.8781409609555126,
+                "10.0": 0.8870597189296154,
+                "30.0": 0.8902520196112632
+              },
+              "chosen_C": 30.0
+            }
+          },
+          "BiLSTM (retrained)": {
+            "seed": 42,
+            "epochs_run": 9,
+            "best_val_loss": 0.7947438955307007,
+            "n": 290,
+            "accuracy": 0.7413793103448276,
+            "macro_f1": 0.5854621764366972,
+            "macro_f1_ci95": [
+              0.5344678355224889,
+              0.6314733128552902
+            ],
+            "per_class": {
+              "automobile": {
+                "precision": 0.0,
+                "recall": 0.0,
+                "f1": 0.0,
+                "support": 11
+              },
+              "entertainment": {
+                "precision": 0.9827586206896551,
+                "recall": 0.890625,
+                "f1": 0.9344262295081968,
+                "support": 64
+              },
+              "politics": {
+                "precision": 0.6153846153846154,
+                "recall": 0.6857142857142857,
+                "f1": 0.6486486486486487,
+                "support": 35
+              },
+              "science": {
+                "precision": 0.75,
+                "recall": 0.15,
+                "f1": 0.25,
+                "support": 20
+              },
+              "sports": {
+                "precision": 0.9791666666666666,
+                "recall": 0.8545454545454545,
+                "f1": 0.912621359223301,
+                "support": 55
+              },
+              "technology": {
+                "precision": 0.4583333333333333,
+                "recall": 0.7674418604651163,
+                "f1": 0.5739130434782609,
+                "support": 43
+              },
+              "world": {
+                "precision": 0.7391304347826086,
+                "recall": 0.8225806451612904,
+                "f1": 0.7786259541984732,
+                "support": 62
+              }
+            },
+            "confusion_matrix": {
+              "labels": [
+                "automobile",
+                "entertainment",
+                "politics",
+                "science",
+                "sports",
+                "technology",
+                "world"
+              ],
+              "matrix": [
+                [
+                  0,
+                  0,
+                  2,
+                  0,
+                  0,
+                  7,
+                  2
+                ],
+                [
+                  0,
+                  57,
+                  0,
+                  0,
+                  0,
+                  7,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  24,
+                  1,
+                  1,
+                  8,
+                  1
+                ],
+                [
+                  0,
+                  0,
+                  1,
+                  3,
+                  0,
+                  7,
+                  9
+                ],
+                [
+                  0,
+                  1,
+                  7,
+                  0,
+                  47,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  4,
+                  0,
+                  0,
+                  33,
+                  6
+                ],
+                [
+                  0,
+                  0,
+                  1,
+                  0,
+                  0,
+                  10,
+                  51
+                ]
+              ]
+            },
+            "seeds": [
+              42,
+              43,
+              44
+            ],
+            "macro_f1_mean": 0.560534684408429,
+            "macro_f1_std": 0.019780542110945265,
+            "accuracy_mean": 0.7114942528735632,
+            "accuracy_std": 0.02889610365511848,
+            "runs": [
+              {
+                "seed": 42,
+                "epochs_run": 9,
+                "accuracy": 0.7413793103448276,
+                "macro_f1": 0.5854621764366972
+              },
+              {
+                "seed": 43,
+                "epochs_run": 10,
+                "accuracy": 0.7206896551724138,
+                "macro_f1": 0.5370768547494527
+              },
+              {
+                "seed": 44,
+                "epochs_run": 12,
+                "accuracy": 0.6724137931034483,
+                "macro_f1": 0.559065022039137
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "tensorflow": "2.19.1"
+}

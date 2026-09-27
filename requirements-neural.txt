@@ -1,0 +1,4 @@
+-r requirements.txt
+# Neural models (BiLSTM / BiSimpleRNN) and loading the original .h5 files
+tensorflow==2.19.1
+tf-keras==2.19.0

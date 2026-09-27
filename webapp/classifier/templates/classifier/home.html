@@ -1,0 +1,24 @@
+{% extends "classifier/base.html" %}
+{% block content %}
+<h1>News text classification</h1>
+<p>Two tasks, each served by the model that did best on a <strong>de-duplicated</strong> held-out test set.
+Test scores below come from the saved training run.</p>
+<div class="grid">
+{% for c in cards %}
+  <div class="card">
+    <h2 style="margin-top:0">{{ c.task.title }}</h2>
+    {% if c.error %}<p class="bad">{{ c.error }}</p>{% else %}
+      <p class="muted">Labels: {{ c.manifest.labels|join:", " }}</p>
+      <table>
+        <tr><th>Model</th><th>Accuracy</th><th>Macro F1</th></tr>
+        {% for name, m in c.manifest.models.items %}
+        <tr><td>{{ m.title }}{% if name == c.manifest.default_model %} <span class="muted">(default)</span>{% endif %}</td>
+            <td>{% widthratio m.test_metrics.accuracy 1 100 %}%</td><td>{% widthratio m.test_metrics.macro_f1 1 100 %}%</td></tr>
+        {% endfor %}
+      </table>
+      <p><a href="{% url 'classify' c.key %}">Classify text →</a></p>
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
+{% endblock %}

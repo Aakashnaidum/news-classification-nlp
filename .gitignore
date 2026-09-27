@@ -1,0 +1,18 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.env
+*.sqlite3
+# Data and trained artifacts are not redistributed; see data/README.md
+data/*.csv
+artifacts/*/
+*.h5
+media/
+.DS_Store
+.idea/
+.vscode/
+.claude/

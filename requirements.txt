@@ -1,0 +1,7 @@
+# Core: data audit, TF-IDF baseline, web app. Tested with Python 3.11.
+django==4.2.30
+joblib==1.6.0
+numpy==2.1.3
+pandas==3.0.6
+scikit-learn==1.9.1
+scipy==1.17.1

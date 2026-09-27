@@ -1,0 +1,12 @@
+{% extends "classifier/base.html" %}
+{% block title %}My history{% endblock %}
+{% block content %}
+<h1>My history</h1>
+<div class="card table-wrap"><table>
+  <tr><th>When (UTC)</th><th>Task</th><th>Model</th><th>Label</th><th>Confidence</th><th>Text</th></tr>
+  {% for c in items %}
+  <tr><td>{{ c.created_at|date:"Y-m-d H:i" }}</td><td>{{ c.get_task_display }}</td><td>{{ c.model_name }}</td><td>{{ c.label }}</td>
+      <td>{{ c.confidence|floatformat:3 }}</td><td style="white-space:normal">{{ c.text|truncatechars:90 }}</td></tr>
+  {% empty %}<tr><td colspan="6">Nothing yet.</td></tr>{% endfor %}
+</table></div>
+{% endblock %}

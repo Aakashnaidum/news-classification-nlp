@@ -1,0 +1,31 @@
+{% extends "classifier/base.html" %}
+{% block title %}{{ task.title }}{% endblock %}
+{% block content %}
+<h1>{{ task.title }}</h1>
+{% if error %}<div class="notice">{{ error }}</div>{% else %}
+{% if task_key == "fake_news" %}
+<div class="notice">Caution: in this dataset "fake" items are fact-check write-ups and "real" items are wire-style news reports,
+so the model mainly recognises that <em>genre</em>. It is not a fact-checker.</div>
+{% endif %}
+{% if result %}
+<div class="card">
+  <div class="muted">{{ result_title }}</div>
+  <div class="big">{{ result.label }}</div>
+  <table style="max-width:520px">
+    {% for label, p in probs %}
+    <tr><td>{{ label }}</td><td style="width:60%"><div class="bar" style="width:{% widthratio p 1 100 %}%"></div></td><td>{{ p|floatformat:3 }}</td></tr>
+    {% endfor %}
+  </table>
+  {% if not user.is_authenticated %}<p class="muted">Log in to keep a history.</p>{% endif %}
+</div>
+{% endif %}
+<div class="card">
+  <form method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+    <p><label for="id_text">News text</label>{{ form.text.errors }}{{ form.text }}</p>
+    <p><label for="id_model">Model</label>{{ form.model }}</p>
+    <button type="submit">Classify</button>
+  </form>
+</div>
+{% endif %}
+{% endblock %}

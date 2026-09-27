@@ -1,0 +1,35 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check .
+      - name: Library tests (synthetic data)
+        run: pytest -q
+      - name: Web app tests
+        working-directory: webapp
+        env:
+          DJANGO_DEBUG: "true"
+        run: |
+          python manage.py test classifier
+          python manage.py makemigrations --check --dry-run
+  neural:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: pip install -r requirements-neural.txt pytest
+      - name: Tokenizer parity with Keras + neural artifact round trip
+        run: pytest -q tests/test_text.py tests/test_models.py
